@@ -10,12 +10,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { NewsItem } from './types';
 import { useRef } from 'react';
-import { NewsSlider as NewsSliderType } from './components/NewsSlider';
 
 // Disable SSR for the NewsSlider component to avoid window is not defined errors
 const NewsSlider = dynamic(() => import('./components/NewsSlider'), {
   ssr: false,
-}) as React.ForwardRefExoticComponent<React.PropsWithoutRef<{ newsItems: NewsItem[] }> & React.RefAttributes<NewsSliderType>>;
+});
 
 const videos = [
   {
@@ -90,7 +89,7 @@ const newsItems: NewsItem[] = [
 ];
 
 export default function Home() {
-  const newsSliderRef = useRef<NewsSliderType>(null);
+  const newsSliderRef = useRef<any>(null);
   return (
     <Layout>
       <Hero />
