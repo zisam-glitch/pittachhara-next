@@ -139,7 +139,7 @@ export default function Home() {
 
 
       {/* News Section */}
-      <section className="py-20 bg-white font-geograph">
+      <section className="py-20 bg-white text-gray-800 font-geograph">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold">Latest News</h2>
