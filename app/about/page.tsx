@@ -69,7 +69,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our Story */}
-        <section id="our-story" className="py-24  bg-white font-geograph">
+        <section id="our-story" className="py-24 text-gray-800  bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
             <div className="flex flex-col md:flex-row align-center items-stretch gap-16 h-full">
               <div className="w-full md:w-3/4">
@@ -145,7 +145,7 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="py-24 bg-white font-geograph">
+        <section className="py-24 bg-white text-gray-800 font-geograph">
           <div className="container mx-auto px-6 h-full">
             <div className="flex flex-col items-center md:flex-row-reverse gap-16 h-full">
               <div className="w-full md:w-1/2">

@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <Layout>
       <Hero />
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-geograph">The Pittachhara Conservation Way</h2>
           <div className='grid grid-cols-[2fr_1fr] gap-6 font-geograph'>
@@ -139,7 +139,7 @@ export default function Home() {
 
 
       {/* News Section */}
-      <section className="py-20 bg-white dark:bg-gray-900 font-geograph">
+      <section className="py-20 bg-white font-geograph">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold">Latest News</h2>
@@ -265,7 +265,7 @@ export default function Home() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="bg-gray-50 py-16 font-geograph">
+      <section className="bg-gray-50 text-gray-800 py-16 font-geograph">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch</h2>

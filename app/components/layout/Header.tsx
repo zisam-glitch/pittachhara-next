@@ -15,7 +15,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm z-50 shadow-sm font-geograph">
+    <header className="fixed w-full bg-white/90  backdrop-blur-sm z-50 shadow-sm font-geograph">
       <div className="container mx-auto px-6 py-2">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -29,7 +29,7 @@ export default function Header() {
               <Link 
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors font-medium"
+                className="text-gray-700  hover:text-green-600 transition-colors font-medium"
               >
                 {link.name}
               </Link>
@@ -51,7 +51,7 @@ export default function Header() {
               Donate
             </Link>
             <button 
-              className="text-gray-700 dark:text-gray-300 focus:outline-none"
+              className="text-gray-700 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -76,7 +76,7 @@ export default function Header() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
+                  className="block px-4 py-2 text-gray-700  hover:bg-gray-100  rounded-md transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}

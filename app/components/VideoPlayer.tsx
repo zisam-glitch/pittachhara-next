@@ -132,9 +132,9 @@ export function VideoPlayer({ video, className = '', showDetails = true, height 
       
       {showDetails && (
         <div className="px-1">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white">{video.title}</h3>
+          <h3 className="text-lg font-medium text-gray-900">{video.title}</h3>
           {video.description && (
-            <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+            <p className="text-sm text-gray-600 line-clamp-2">
               {video.description}
             </p>
           )}

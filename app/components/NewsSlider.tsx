@@ -59,7 +59,7 @@ const NewsSlider = forwardRef<NewsSliderHandles, NewsSliderProps>(({ newsItems }
       >
         {newsItems.map((item) => (
           <SwiperSlide key={item.id} className="swiper-slide">
-            <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
+            <div className="bg-white  overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
               <div className="relative overflow-hidden h-48">
                 <img 
                   src={item.image} 
@@ -72,7 +72,7 @@ const NewsSlider = forwardRef<NewsSliderHandles, NewsSliderProps>(({ newsItems }
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{item.excerpt}</p>
+                <p className="text-gray-600  mb-4">{item.excerpt}</p>
                 <div className="mt-auto flex justify-between items-center">
                   <button className="text-black font-medium transition-colors">
                     Read More →

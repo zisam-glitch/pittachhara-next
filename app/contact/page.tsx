@@ -55,7 +55,7 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      <div className="min-h-screen">
+      <div className="min-h-screen text-gray-800">
         {/* Hero Section with Parallax Effect */}
         <section className="relative h-[500px] md:h-[500px] flex items-center font-larken justify-center text-white overflow-hidden">
           <div className="absolute inset-0 w-full h-full">

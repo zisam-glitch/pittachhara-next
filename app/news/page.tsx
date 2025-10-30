@@ -96,7 +96,7 @@ export default function NewsPage() {
       </section>
 
       {/* News Grid Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white text-gray-800 ">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <span className="inline-block text-[#f6b417] font-medium mb-3 text-lg">Latest Updates</span>
@@ -169,7 +169,7 @@ export default function NewsPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="relative py-20 bg-gray-50">
+      <section className="relative text-gray-800  py-20 bg-gray-50">
         <div className="relative container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto bg-white/90 p-8 md:p-12  shadow-lg border border-gray-100">
             <div className="text-center max-w-2xl mx-auto">
