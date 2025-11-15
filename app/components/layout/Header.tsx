@@ -36,7 +36,7 @@ export default function Header() {
             ))}
             <Link
               href="/donate"
-              className="px-8 py-3 bg-[#f6b417] text-black  hover:bg-green-700 transition-colors font-medium"
+              className="px-8 py-3 bg-[#f6b417] text-black  hover:bg-[#f6b417]/80 transition-colors font-medium"
             >
               Donate
             </Link>
@@ -46,7 +46,7 @@ export default function Header() {
           <div className="flex items-center md:hidden">
             <Link
               href="/donate"
-              className="mr-4 px-3 py-1.5 text-sm bg-green-600 text-white  hover:bg-green-700 transition-colors font-medium"
+              className="mr-4 px-3 py-1.5 bg-[#f6b417] text-sm text-black  hover:bg-[#f6b417]/80 transition-colors font-medium"
             >
               Donate
             </Link>
@@ -84,7 +84,7 @@ export default function Header() {
               ))}
               <Link
                 href="/donate"
-                className="block px-4 py-2 text-center text-white bg-green-600 hover:bg-green-700 rounded-md transition-colors mt-2"
+                className="block px-4 py-2 text-center text-black bg-[#f6b417] hover:bg-[#f6b417]/80 rounded-md transition-colors mt-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Donate Now

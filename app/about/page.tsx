@@ -2,6 +2,7 @@
 
 import { Layout } from '../components/layout';
 import Image from 'next/image';
+import { VideoPlayer } from '../components/VideoPlayer';
 
 type TeamMember = {
   name: string;
@@ -9,6 +10,25 @@ type TeamMember = {
   bio: string;
   image: string;
 };
+
+const videos = [
+  {
+    id: '1',
+    title: '',
+    description: '',
+    src: '/about.mp4',
+    thumb: ''
+  }, 
+  {
+    id: '2',
+    title: '',
+    description: '',
+    src: '/avs/1.mp4',
+    thumb: ''
+  },
+  
+
+];
 
 const teamMembers: TeamMember[] = [
   {
@@ -71,40 +91,83 @@ export default function AboutPage() {
         {/* Our Story */}
         <section id="our-story" className="py-24 text-gray-800  bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
-            <div className="flex flex-col md:flex-row align-center items-stretch gap-16 h-full">
-              <div className="w-full md:w-3/4">
+            <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-center gap-20">
+              <div className="">
                 <h2 className="text-3xl font-bold mb-6">About PIC</h2>
                 <div className="w-24 h-1 bg-[#f6b417] mb-6"></div>
                 <p className="text-gray-600 text-lg mb-6">
-                  Pittachhara, the only privately founded and protected forest in Bangladesh, located at Matiranga upazila of Khagrachari District.
-                  The total conservation area of this ever-green forest  is<b className='text-red-600 font-bold'> 14.56 hectors.</b>
-
-
+                  Since its inception in 2017, Pittachhara Trust has been officially recognized by the International Union for Conservation of Nature (IUCN) as an Other Effective Area-based Conservation Measure (OECM) — one of the first in Bangladesh. OECMs achieve sustained, effective in-situ biodiversity conservation outside traditional protected networks, contributing to global biodiversity targets such as Aichi Target 11 and the post-2020 Global Biodiversity Framework. Pittachhara Trust serves as a model for community-driven, privately managed forest conservation.
                 </p>
-                <p className="text-gray-600 text-lg mb-6">
-                  Pittachhara represents a rare and effective privately‑led conservation model in Bangladesh that combines ecological restoration, community development, health, education, advocacy, and wildlife rescue, rehabilitation, research in a challenging region. While deforestation remains a threat, PCI’s holistic approach—melding conservation with local incentives and policy engagement—offers a hopeful blueprint for protecting the Chattogram Hill Tracts’ precious biodiversity.
+                <p className="text-gray-600 text-lg">
+                  The forest spans approximately 50 acres (≈20 hectares) of privately owned land in Khagrachari Hill District. It is embedded within the globally recognised Indo-Burma Biodiversity Hotspot and remains one of the few well-vegetated, semi-evergreen hill forests in the region. Surveys have documented around 150 species of resident and migratory birds, including threatened taxa such as the Red-breasted Parakeet (Psittacula alexandri) and Cachar Bulbul (Hemixos flavala flavala). Key mammals include the Bengal Slow Loris (Nycticebus bengalensis), Northern Pig-tailed Macaque (Macaca leonina), and Leopard Cat (Prionailurus bengalensis), all listed as Vulnerable or Endangered on the IUCN Red List. The forest also hosts at least 26 species of snakes and other 20 reptiles and amphibians.
+                </p>
 
+              </div>
+              <div className="">
+                <img className='h-full' src="/about2.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="our-story" className="pb-24 text-gray-800  bg-white font-geograph">
+          <div className="container mx-auto px-6 h-full">
+            <div className="grid gird-cols-1 md:grid-cols-[1fr_1.3fr] items-center gap-15">
+              <div className="hidden md:block">
+              <VideoPlayer
+                  video={videos[0]}
+                  height='h-[full]'
+                  showDetails={false}
+                  className='pb-2'
+                />
+              </div>
+              <div className="">
+                <p className="text-gray-600 font-bold text-lg mb-6">
+                  Through rewilding and reforestation programs, Pittachhara Trust undertakes native tree enrichment, stream restoration, and habitat protection to rebuild ecological connectivity. 
+                
                 </p>
                 <p className="text-gray-600 text-lg ">
-                  PCI is known for its ecologically rich landscapes and diverse habitats that support many species, including regionally endemic and globally threatened ones. Its focus on reforestation and habitat restoration has led to noticeable improvements in local wildlife populations, highlighting PCI’s vital role in conserving regional biodiversity.
+                  
+                  Our work extends beyond the forest boundary by engaging local communities in sustainable livelihoods, providing alternative income sources such as handicrafts, mushroom cultivation, free-range poultry, and organic farming — reducing dependency on logging and hunting.
 
                 </p>
+              
+
               </div>
-              <div className="w-full md:w-1/2 h-full flex justify-end">
-                <div className="relative w-full h-full min-h-[400px] md:min-h-[600px] rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 flex justify-end">
-                    <div className="relative h-full w-full max-w-[90%]">
-                      <Image
-                        src="/about2.jpg"
-                        alt="Our Team Working Together"
-                        fill
-                        className="object-contain object-right"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                  </div>
-                </div>
+              <div className="block md:hidden">
+              <VideoPlayer
+                  video={videos[0]}
+                  height='h-full'
+                  showDetails={false}
+                  className='pb-2'
+                />
               </div>
+
+            </div>
+          </div>
+        </section>
+        <section id="our-story" className="pb-24 text-gray-800  bg-white font-geograph">
+          <div className="container mx-auto px-6 h-full">
+            <div className="grid gird-cols-1 md:grid-cols-[1.3fr_1fr] items-center gap-15">
+              <div className="">
+
+              <p className="text-gray-600 font-bold text-lg mb-6">
+              Pittachhara Trust also operates a wildlife rescue, rehabilitation, and release facility, caring for injured and displaced animals while complementing national conservation efforts.
+                </p>
+
+              <p className='text-gray-600 text-lg '> By integrating ecological restoration, biodiversity protection, and community engagement, the Trust offers a scalable, sustainable, and nature-based solution to biodiversity loss and climate challenges in Bangladesh.
+              </p>
+              
+
+              </div>
+              <div className="">
+              <VideoPlayer
+                  video={videos[1]}
+                  height='h-[300px]'
+                  showDetails={false}
+                  className='pb-2'
+                />
+              </div>
+
             </div>
           </div>
         </section>
@@ -136,7 +199,7 @@ export default function AboutPage() {
                     <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                     <p className="text-[#f6b417] font-medium mb-4">{member.role}</p>
                     <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
-                    
+
                   </div>
                 </div>
               ))}
@@ -168,7 +231,7 @@ export default function AboutPage() {
                     }
                   ].map((value, index) => (
                     <div key={index} className="flex items-start space-x-4">
-                      
+
                       <div>
                         <h3 className="text-xl font-semibold mb-1 text-gray-800">{value.title}</h3>
                         <p className="text-gray-600">{value.description}</p>

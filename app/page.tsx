@@ -9,7 +9,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { NewsItem } from './types';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import parse from 'html-react-parser';
 
 // Disable SSR for the NewsSlider component to avoid window is not defined errors
 const NewsSlider = dynamic(() => import('./components/NewsSlider'), {
@@ -19,24 +20,59 @@ const NewsSlider = dynamic(() => import('./components/NewsSlider'), {
 const videos = [
   {
     id: '1',
-    title: 'The Beauty of Nature',
-    description: 'Experience the breathtaking beauty of our natural world in stunning 4K resolution.',
-    src: '/video1.mp4',
-    thumb: '/thumb1.png'
+    title: 'Pittachhara Forest Conservation',
+    description: 'Nestled within the ecologically rich landscapes of Pittachhara Forest, the Pittachhara Trust is dedicated to restoring balance between people and nature. Its diverse habitats sustain numerous species, including several that are regionally endemic and globally threatened. <br/> <br/> Through science-based reforestation, habitat restoration, and inclusive community engagement, the Trust has achieved measurable improvements in local wildlife populations and ecosystem resilience. <br/> <br/> Guided by a vision of coexistence, the Pittachhara Trust continues to rewild nature and protect wildlife — ensuring that these forests remain a sanctuary for life, and a legacy for future generations.',
+    src: '/avs/1.mp4',
+    thumb: '/avs/1.png'
   },
+  // {
+  //   id: '2',
+  //   title: 'Wildlife Wonders',
+  //   description: 'Discover the incredible diversity of wildlife.',
+  //   src: '/avs/2.mp4',
+  //   thumb: '/avs/2.png'
+  // },
+  // {
+  //   id: '3',
+  //   title: 'Ocean Depths',
+  //   description: 'Dive into the mysterious and beautiful world.',
+  //   src: '/avs/3.mp4',
+  //   thumb: '/avs/3.png'
+  // },
+  // {
+  //   id: '4',
+  //   title: 'Ocean Depths',
+  //   description: 'Dive into the mysterious and beautiful world.',
+  //   src: '/avs/4.mp4',
+  //   thumb: '/avs/4.png'
+  // },
   {
-    id: '2',
-    title: 'Wildlife Wonders',
-    description: 'Discover the incredible diversity of wildlife.',
-    src: '/video2.mp4',
-    thumb: '/thumb2.png'
+    id: '5',
+    title: 'Free Health Program',
+    description: 'Established in 2017, the Pittachhara Medical Center is a free healthcare facility serving both indigenous and Bengali communities in the remote Khagrachari District. The center is staffed by a dedicated medical team, including two MBBS doctors (one gynecology specialist), a certified midwife, a village doctor, a family planning officer, and a clinic assistant. <br/> <br/> In addition to comprehensive medical care, the center offers a subsidized pharmacy, free malaria and eye tests, and free cataract surgeries, ensuring accessible and essential healthcare for underserved communities.',
+    src: '/avs/5.mp4',
+    thumb: '/avs/5.png'
   },
+  // {
+  //   id: '6',
+  //   title: 'Ocean Depths',
+  //   description: 'Dive into the mysterious and beautiful world.',
+  //   src: '/avs/6.mp4',
+  //   thumb: '/avs/6.png'
+  // },
   {
-    id: '3',
+    id: '7',
     title: 'Ocean Depths',
     description: 'Dive into the mysterious and beautiful world.',
-    src: '/video.mp4',
-    thumb: '/thumb1.png'
+    src: '/avs/7.mp4',
+    thumb: '/avs/7.png'
+  },
+  {
+    id: '8',
+    title: 'Ocean Depths',
+    description: 'Dive into the mysterious and beautiful world.',
+    src: '/avs/8.mp4',
+    thumb: '/avs/8.png'
   },
 ];
 // Sample news data
@@ -88,6 +124,28 @@ const newsItems: NewsItem[] = [
   }
 ];
 
+const ReadMore = ({ text, maxLength = 60 }: { text: string; maxLength?: number }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  if (text.length <= maxLength) {
+    return <p className='text-[17px]'>{parse(text)}</p>;
+  }
+
+  const truncatedText = isExpanded ? text : `${text.substring(0, maxLength)}...`;
+
+  return (
+    <div>
+      <p className='text-[17px]'>{parse(truncatedText)} <button 
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="text-[17px] hover:underline mt-1 text-sm"
+      >
+        {isExpanded ? 'Show less' : 'Read more'}
+      </button></p>
+      
+    </div>
+  );
+};
+
 export default function Home() {
   const newsSliderRef = useRef<any>(null);
   return (
@@ -96,39 +154,19 @@ export default function Home() {
       <section className="py-20 text-gray-800 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-geograph">The Pittachhara Conservation Way</h2>
-          <div className='grid grid-cols-[2fr_1fr] gap-6 font-geograph'>
-            <div>
-            <VideoPlayer
-              video={videos[0]}
-              height="h-[559px]"
-              showDetails={false}
-              className='pb-2'
-            />
-            <p className='font-bold text-[17px]'>{videos[0].title}</p>
-            <p className='text-[17px]'>{videos[0].description}</p>
-            </div>
-            <div className='flex flex-col gap-6'>
-              <div>
-              <VideoPlayer
-                video={videos[1]}
-                height="h-[238px]"
-                showDetails={false}
-                className='pb-2'
-              />
-              <p className='font-bold text-[17px]'>{videos[1].title}</p>
-              <p className='text-[17px]'>{videos[1].description}</p>
+          <div className='grid md:grid-cols-2 grid-cols-1 gap-6 font-geograph'>
+            {videos.map((video) => (
+              <div key={video.id}>
+                <VideoPlayer
+                  video={video}
+                  height='h-[350px]'
+                  showDetails={false}
+                  className='pb-2'
+                />
+                <p className='font-bold text-[17px]'>{video.title}</p>
+                <ReadMore text={video.description} />
               </div>
-              <div>
-              <VideoPlayer
-                video={videos[2]}
-                height="h-[238px]"
-                showDetails={false}
-                className='pb-2'
-              />
-              <p className='font-bold text-[17px]'>{videos[2].title}</p>
-              <p className='text-[17px]'>{videos[2].description}</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -327,6 +365,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+    
     </Layout>
   );
 }

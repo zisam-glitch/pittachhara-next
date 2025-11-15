@@ -38,7 +38,7 @@ export default function Hero() {
           className="w-full h-full object-cover"
           poster="/images/forest-poster.jpg"
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/hero.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>  
         <div 
@@ -58,7 +58,9 @@ export default function Hero() {
           className="text-3xl md:text-4xl lg:text-5xl text-white leading-tight font-larken"
           variants={itemVariants}
         >
-          Protecting Nature, Nurturing Communities — The Pittachhara Conservation Way
+          Pittachhara Trust - 
+Restoring the Wild and Uniting Communities
+
         </motion.h1>
       </motion.div>
     </section>
