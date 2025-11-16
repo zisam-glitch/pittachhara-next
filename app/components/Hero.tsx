@@ -36,9 +36,9 @@ export default function Hero() {
           muted
           playsInline
           className="w-full h-full object-cover"
-          poster="/images/forest-poster.jpg"
+          poster="/hero.png"
         >
-          <source src="/hero.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/db1i46uiv/video/upload/v1763312748/hero_ljdajh.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>  
         <div 

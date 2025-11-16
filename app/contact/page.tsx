@@ -96,7 +96,7 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white font-geograph">
+        <section id='contact' className="py-20 bg-gradient-to-b from-gray-50 to-white font-geograph">
           <div className="container mx-auto px-4 sm:px-6">
             <motion.div 
               className="max-w-4xl mx-auto"
