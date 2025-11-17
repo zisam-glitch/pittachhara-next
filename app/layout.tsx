@@ -3,7 +3,10 @@ import "./globals.css";
 import { VideoProvider } from "./context/VideoContext";
 
 export const metadata: Metadata = {
-  title: "Pittachara",
+  title: {
+    default: "Pittachara",
+    template: "%s | Pittachara"
+  },
   description: "Preserving Nature's Legacy",
 };
 

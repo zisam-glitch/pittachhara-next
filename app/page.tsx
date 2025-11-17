@@ -9,12 +9,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { NewsItem } from './types';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, ForwardedRef } from 'react';
 import parse from 'html-react-parser';
 
-// Disable SSR for the NewsSlider component to avoid window is not defined errors
+// Import NewsSlider with SSR disabled
 const NewsSlider = dynamic(() => import('./components/NewsSlider'), {
   ssr: false,
+  loading: () => <div>Loading news...</div>,
 });
 
 const videos = [
@@ -65,63 +66,15 @@ const videos = [
     title: 'Eco-friendly Menstraul Health Program',
     description: 'Pittachhara Medical Center has launched an innovative Menstrual Hygiene Management (MHM) initiative to promote women’s health, environmental sustainability, and economic empowerment in 11 remote hilly villages of Khagrachari District, Bangladesh. The program introduced reusable sanitary pads developed with modern eco-friendly techniques that reduce environmental pollution by up to 75% compared to conventional disposable pads. <br/><br/> To ensure long-term impact and local ownership, 14 adolescent girls from seven villages were trained to produce and distribute these reusable pads, creating new livelihood opportunities within their communities. A nine-month consultation and monitoring process helped ensure proper use, hygiene, and community acceptance—achieving an 80% success rate. This initiative not only improves menstrual health and dignity but also advances gender equality, waste reduction, and climate-resilient livelihoods across marginalized areas.',
     src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763302637/WhatsApp_Video_2025-11-16_at_19.57.51_ff731162_n63bct.mp4',
-    thumb: '/avs/7.png'
+    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/IMG-20221026-WA0011-01_2_gjxgvk.png'
   },
   {
     id: '8',
     title: 'Community Library and Nature Studies',
     description: 'Pittachhara Trust has established a vibrant community library with over 250 members, primarily children and adolescents. The library promotes digital literacy, science education, and biodiversity awareness through regular activities such as nature walks, drama and puppet shows, art camps, Primate Fairs, award ceremonies, and school biodiversity sessions, empowering members to become active stewards of nature. <br/> <br/> In collaboration with renowned universities, the Trust conducts biodiversity awareness programs in local schools. These initiatives build a strong foundation for sustainable conservation leadership in  Bangladesh.',
     src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763302667/WhatsApp_Video_2025-11-16_at_19.55.57_ffe8125e_nc7zjf.mp4',
-    thumb: '/avs/8.png'
+    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/1000033915-01_k1pvyg.jpg'
   },
-];
-// Sample news data
-const newsItems: NewsItem[] = [
-  {
-    id: 1,
-    title: "New Album Release: Summer Vibes 2023",
-    excerpt: "Experience the hottest tracks of the summer with our latest album release.",
-    date: "October 15, 2023",
-    category: "Music",
-    image: "/news/1.jpg",
-    alt: "Summer Vibes 2023 Album Cover"
-  },
-  {
-    id: 2,
-    title: "Upcoming World Tour Announced",
-    excerpt: "We're excited to announce our 2024 world tour across 30+ countries.",
-    date: "October 10, 2023",
-    category: "Tour",
-    image: "/news/2.jpg",
-    alt: "World Tour 2024"
-  },
-  {
-    id: 3,
-    title: "Behind the Scenes: Making of Our Latest Video",
-    excerpt: "Go behind the scenes of our latest music video production.",
-    date: "October 5, 2023",
-    category: "Videos",
-    image: "/news/3.jpeg",
-    alt: "Behind the Scenes"
-  },
-  {
-    id: 4,
-    title: "Exclusive Interview with the Band",
-    excerpt: "Read our exclusive interview with the band about their creative process.",
-    date: "September 28, 2023",
-    category: "Interviews",
-    image: "/news/4.jpg",
-    alt: "Band Interview"
-  },
-  {
-    id: 5,
-    title: "New Merchandise Collection",
-    excerpt: "Check out our latest merchandise collection now available in our store.",
-    date: "September 20, 2023",
-    category: "Merchandise",
-    image: "/news/5.jpeg",
-    alt: "New Merchandise"
-  }
 ];
 
 const ReadMore = ({ text, maxLength = 185 }: { text: string; maxLength?: number }) => {
@@ -147,7 +100,31 @@ const ReadMore = ({ text, maxLength = 185 }: { text: string; maxLength?: number 
 };
 
 export default function Home() {
-  const newsSliderRef = useRef<any>(null);
+  const newsSliderRef = useRef<{ slidePrev: () => void; slideNext: () => void }>(null);
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch('/api/news');
+        if (!response.ok) {
+          throw new Error('Failed to fetch news');
+        }
+        const data = await response.json();
+        setNewsItems(data);
+      } catch (err) {
+        console.error('Error fetching news:', err);
+        setError('Failed to load news. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
   return (
     <Layout>
       <Hero />
@@ -171,11 +148,6 @@ export default function Home() {
         </div>
       </section>
 
-
-
-
-
-
       {/* News Section */}
       <section className="py-20 bg-white text-gray-800 font-geograph">
         <div className="container mx-auto px-6">
@@ -183,18 +155,30 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold">Latest Updates</h2>
             <div className="flex space-x-4">
               <button 
-                onClick={() => newsSliderRef.current?.slidePrev()}
-                className="w-10 h-10  bg-[#f6b417] flex items-center justify-center hover:bg-[#f6b417]/80"
+                onClick={() => {
+                  const swiper = document.querySelector('.swiper-news') as any;
+                  if (swiper && swiper.swiper) {
+                    swiper.swiper.slidePrev();
+                  }
+                }}
+                className="w-10 h-10 bg-[#f6b417] flex items-center justify-center hover:bg-[#f6b417]/80"
                 aria-label="Previous slide"
+                disabled={isLoading || newsItems.length === 0}
               >
                 <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button 
-                onClick={() => newsSliderRef.current?.slideNext()}
+                onClick={() => {
+                  const swiper = document.querySelector('.swiper-news') as any;
+                  if (swiper && swiper.swiper) {
+                    swiper.swiper.slideNext();
+                  }
+                }}
                 className="w-10 h-10 bg-[#f6b417] flex items-center justify-center hover:bg-[#f6b417]/80"
                 aria-label="Next slide"
+                disabled={isLoading || newsItems.length === 0}
               >
                 <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -202,7 +186,20 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <NewsSlider ref={newsSliderRef} newsItems={newsItems} />
+          
+          {isLoading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#f6b417]"></div>
+            </div>
+          ) : error ? (
+            <div className="text-center py-12 text-red-600">{error}</div>
+          ) : newsItems.length > 0 ? (
+            <div ref={newsSliderRef}>
+              <NewsSlider newsItems={newsItems} />
+            </div>
+          ) : (
+            <div className="text-center py-12">No news available at the moment.</div>
+          )}
           
           {/* Custom styles for the swiper */}
           <style jsx global>{`
@@ -257,33 +254,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Donation Section */}
-      <section id='donate' className="bg-white text-gray-800 py-16 font-geograph">
+      {/* Support Section */}
+      <section id='support' className="bg-white text-gray-800 py-16 font-geograph">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-geograph">Support Our Cause</h2>
-            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-              Your generous support helps us protect wildlife, preserve natural habitats, and create a sustainable future for generations to come.
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-geograph">Get Involved</h2>
+            <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto">
+              Your support helps us protect wildlife, preserve natural habitats, and create a sustainable future for generations to come.
             </p>
             
-            <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 max-w-2xl mx-auto">
-              <div className="mb-6">
-                <h3 className="text-2xl font-semibold text-[#0a2e1f] mb-4">Interested in Making a Donation?</h3>
-                <p className="text-gray-600 mb-6">
-                  We appreciate your willingness to support our mission. To make a donation, please contact us directly via email and our team will guide you through the process.
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Donation Card */}
+              <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 h-full flex flex-col">
+                <div className="mb-6 flex-grow">
+                  <h3 className="text-2xl font-semibold text-[#0a2e1f] mb-4">Make a Donation</h3>
+                  <p className="text-gray-600 mb-6">
+                    We appreciate your willingness to support our mission. To make a donation, please contact us directly via email and our team will guide you through the process.
+                  </p>
+                </div>
+                
+                <div className="mt-auto">
+                  <a 
+                    href="/contact#contact"
+                    className="inline-block w-full bg-[#f6b417] hover:bg-[#e0a416] text-black font-semibold px-8 py-3 rounded transition-colors text-center"
+                  >
+                    Contact Us to Donate
+                  </a>
+                  
+                  <p className="text-sm text-gray-500 mt-4">
+                    All donations are tax-deductible. Your contribution makes a difference!
+                  </p>
+                </div>
               </div>
-              
-              <a 
-                href="/contact#contact"
-                className="inline-block bg-[#f6b417] hover:bg-[#e0a416] text-black font-semibold px-8 py-3 rounded transition-colors"
-              >
-                Contact Us to Donate
-              </a>
-              
-              <p className="text-sm text-gray-500 mt-6">
-                All donations are tax-deductible. Your contribution makes a difference!
-              </p>
+
+              {/* Volunteer Card */}
+              <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 h-full flex flex-col">
+                <div className="mb-6 flex-grow">
+                  <h3 className="text-2xl font-semibold text-[#0a2e1f] mb-4">Become a Volunteer</h3>
+                  <p className="text-gray-600 mb-6">
+                    Join our team of dedicated volunteers and make a direct impact. Share your skills, time, and passion for conservation with us.
+                  </p>
+                 
+                </div>
+                
+                <div className="mt-auto">
+                  <a 
+                    href="/contact#contact"
+                    className="inline-block w-full bg-[#0a2e1f] hover:bg-[#082519] text-white font-semibold px-8 py-3 rounded transition-colors text-center"
+                  >
+                    Join Our Volunteer Team
+                  </a>
+                  
+                  <p className="text-sm text-gray-500 mt-4">
+                    No experience necessary - just bring your enthusiasm and commitment!
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

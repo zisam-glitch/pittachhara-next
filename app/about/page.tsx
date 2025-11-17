@@ -1,14 +1,54 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Layout } from '../components/layout';
 import Image from 'next/image';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { getTeamMembers, TeamMember as ContentfulTeamMember } from '@/lib/contentful';
 import { VideoPlayer } from '../components/VideoPlayer';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
-type TeamMember = {
-  name: string;
-  role: string;
-  bio: string;
-  image: string;
+interface TeamMemberCardProps {
+  member: ContentfulTeamMember;
+}
+
+const TeamMemberCard = ({ member }: TeamMemberCardProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Convert rich text to plain text and trim to 50 characters
+  const plainText = documentToPlainTextString(member.description);
+  const MAX_LENGTH = 70;
+  const needsTruncation = plainText.length > MAX_LENGTH;
+  const displayText = isExpanded ? plainText : `${plainText.substring(0, MAX_LENGTH)}${needsTruncation ? '...' : ''}`;
+
+  return (
+    <div className="group text-center">
+      <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden transition-all duration-300 group-hover:shadow-lg">
+        <Image
+          src={member.imageUrl ? `https:${member.imageUrl}` : '/placeholder-user.jpg'}
+          alt={member.fullName}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+        />
+      </div>
+      <div className="px-4">
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{member.fullName}</h3>
+        <p className="text-[#f6b417] font-medium mb-2">{member.designation}</p>
+        <div className="text-gray-600 text-sm leading-relaxed">
+          {displayText}
+          {needsTruncation && (
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-[#f6b417] font-medium ml-1 hover:underline focus:outline-none"
+            >
+              {isExpanded ? 'Read Less' : 'Read More'}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const videos = [
@@ -25,39 +65,30 @@ const videos = [
     description: '',
     src: '/avs/1.mp4',
     thumb: ''
-  },
-  
-
-];
-
-const teamMembers: TeamMember[] = [
-  {
-    name: 'John Doe',
-    role: 'Founder & CEO',
-    bio: 'With over 10 years of experience in the industry, John leads our team with vision and passion.',
-    image: '/russel.jpg',
-  },
-  {
-    name: 'Jane Smith',
-    role: 'Creative Director',
-    bio: 'Jane brings creativity and innovation to every project, ensuring our work stands out.',
-    image: '/3.jpg',
-  },
-  {
-    name: 'Alex Johnson',
-    role: 'Lead Developer',
-    bio: 'Alex turns ideas into reality with clean, efficient code and technical expertise.',
-    image: '/2.jpg',
-  },
-  {
-    name: 'Sarah Williams',
-    role: 'Community Manager',
-    bio: 'Sarah builds and nurtures our community with dedication and enthusiasm.',
-    image: '/1.jpg',
-  },
+  }
 ];
 
 export default function AboutPage() {
+  const [teamMembers, setTeamMembers] = useState<ContentfulTeamMember[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        const members = await getTeamMembers();
+        setTeamMembers(members);
+      } catch (err) {
+        console.error('Failed to fetch team members:', err);
+        setError('Failed to load team members. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTeamMembers();
+  }, []);
+
   return (
     <Layout>
       <div className="min-h-screen">
@@ -89,7 +120,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our Story */}
-        <section id="our-story" className="py-24 text-gray-800  bg-white font-geograph">
+        <section id="our-story" className="py-24 text-gray-800 bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
             <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-center gap-20">
               <div className="">
@@ -101,7 +132,6 @@ export default function AboutPage() {
                 <p className="text-gray-600 text-lg">
                   The forest spans approximately 50 acres (≈20 hectares) of privately owned land in Khagrachari Hill District. It is embedded within the globally recognised Indo-Burma Biodiversity Hotspot and remains one of the few well-vegetated, semi-evergreen hill forests in the region. Surveys have documented around 150 species of resident and migratory birds, including threatened taxa such as the Red-breasted Parakeet (Psittacula alexandri) and Cachar Bulbul (Hemixos flavala flavala). Key mammals include the Bengal Slow Loris (Nycticebus bengalensis), Northern Pig-tailed Macaque (Macaca leonina), and Leopard Cat (Prionailurus bengalensis), all listed as Vulnerable or Endangered on the IUCN Red List. The forest also hosts at least 26 species of snakes and other 20 reptiles and amphibians.
                 </p>
-
               </div>
               <div className="">
                 <img className='h-full' src="/about2.jpg" alt="" />
@@ -109,13 +139,15 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <section id="our-story" className="pb-24 text-gray-800  bg-white font-geograph">
+
+        {/* Video Section 1 */}
+        <section id="our-story" className="pb-24 text-gray-800 bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
-            <div className="grid gird-cols-1 md:grid-cols-[1fr_1.3fr] items-center gap-15">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1.3fr] items-center gap-16">
               <div className="hidden md:block">
-              <VideoPlayer
+                <VideoPlayer
                   video={videos[0]}
-                  height='h-[full]'
+                  height='h-full'
                   showDetails={false}
                   className='pb-2'
                 />
@@ -123,51 +155,43 @@ export default function AboutPage() {
               <div className="">
                 <p className="text-gray-600 font-bold text-lg mb-6">
                   Through rewilding and reforestation programs, Pittachhara Trust undertakes native tree enrichment, stream restoration, and habitat protection to rebuild ecological connectivity. 
-                
                 </p>
-                <p className="text-gray-600 text-lg ">
-                  
+                <p className="text-gray-600 text-lg">
                   Our work extends beyond the forest boundary by engaging local communities in sustainable livelihoods, providing alternative income sources such as handicrafts, mushroom cultivation, free-range poultry, and organic farming — reducing dependency on logging and hunting.
-
                 </p>
-              
-
               </div>
               <div className="block md:hidden">
-              <VideoPlayer
+                <VideoPlayer
                   video={videos[0]}
                   height='h-full'
                   showDetails={false}
                   className='pb-2'
                 />
               </div>
-
             </div>
           </div>
         </section>
-        <section id="our-story" className="pb-24 text-gray-800  bg-white font-geograph">
+
+        {/* Video Section 2 */}
+        <section id="our-story" className="pb-24 text-gray-800 bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
-            <div className="grid gird-cols-1 md:grid-cols-[1.3fr_1fr] items-center gap-15">
+            <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] items-center gap-16">
               <div className="">
-
-              <p className="text-gray-600 font-bold text-lg mb-6">
-              Pittachhara Trust also operates a wildlife rescue, rehabilitation, and release facility, caring for injured and displaced animals while complementing national conservation efforts.
+                <p className="text-gray-600 font-bold text-lg mb-6">
+                  Pittachhara Trust also operates a wildlife rescue, rehabilitation, and release facility, caring for injured and displaced animals while complementing national conservation efforts.
                 </p>
-
-              <p className='text-gray-600 text-lg '> By integrating ecological restoration, biodiversity protection, and community engagement, the Trust offers a scalable, sustainable, and nature-based solution to biodiversity loss and climate challenges in Bangladesh.
-              </p>
-              
-
+                <p className='text-gray-600 text-lg'> 
+                  By integrating ecological restoration, biodiversity protection, and community engagement, the Trust offers a scalable, sustainable, and nature-based solution to biodiversity loss and climate challenges in Bangladesh.
+                </p>
               </div>
               <div className="">
-              <VideoPlayer
+                <VideoPlayer
                   video={videos[1]}
                   height='h-[300px]'
                   showDetails={false}
                   className='pb-2'
                 />
               </div>
-
             </div>
           </div>
         </section>
@@ -183,27 +207,26 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {teamMembers.map((member, index) => (
-                <div key={index} className="group text-center">
-                  <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden transition-all duration-300 group-hover:shadow-lg">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                  <div className="px-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                    <p className="text-[#f6b417] font-medium mb-4">{member.role}</p>
-                    <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
-
-                  </div>
-                </div>
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#f6b417]"></div>
+                <p className="mt-4 text-gray-600">Loading team members...</p>
+              </div>
+            ) : error ? (
+              <div className="text-center py-12">
+                <p className="text-red-500">{error}</p>
+              </div>
+            ) : teamMembers.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {teamMembers.map((member) => (
+                  <TeamMemberCard key={member.id} member={member} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-gray-600">No team members found.</p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -231,7 +254,6 @@ export default function AboutPage() {
                     }
                   ].map((value, index) => (
                     <div key={index} className="flex items-start space-x-4">
-
                       <div>
                         <h3 className="text-xl font-semibold mb-1 text-gray-800">{value.title}</h3>
                         <p className="text-gray-600">{value.description}</p>

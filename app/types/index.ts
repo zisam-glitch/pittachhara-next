@@ -1,9 +1,11 @@
 export interface NewsItem {
-  id: number;
+  id: string;
   title: string;
   excerpt: string;
+  content: any; // Rich text content from Contentful
+  imageUrl: string;
   date: string;
-  category: string;
-  image: string;
-  alt: string;
+  slug: string;
+  category?: string;
+  alt?: string;
 }

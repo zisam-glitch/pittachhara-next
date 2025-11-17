@@ -7,7 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { NewsItem } from '../types';
+import { NewsItem } from '@/lib/contentful';
 
 interface NewsSliderProps {
   newsItems: NewsItem[];
@@ -36,7 +36,6 @@ const NewsSlider = forwardRef<NewsSliderHandles, NewsSliderProps>(({ newsItems }
 
   return (
     <div className="relative">
-
       <Swiper
         modules={[Pagination]}
         spaceBetween={20}
@@ -52,31 +51,46 @@ const NewsSlider = forwardRef<NewsSliderHandles, NewsSliderProps>(({ newsItems }
             slidesPerView: 3,
           },
         }}
-        className="swiper-news"
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
+        className="swiper-news"
       >
-        {newsItems.map((item) => (
+        {newsItems.slice(0, 6).map((item) => (
           <SwiperSlide key={item.id} className="swiper-slide">
-            <div className="bg-white  overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
+            <div className="bg-white overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
               <div className="relative overflow-hidden h-48">
-                <img 
-                  src={item.image} 
-                  alt={item.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-                <span className="absolute top-4 right-4 px-3 py-1 text-sm  text-black bg-white ">
-                  {item.category}
-                </span>
+                {item.imageUrl ? (
+                  <img 
+                    src={`https:${item.imageUrl}`} 
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-gray-400">No Image</span>
+                  </div>
+                )}
+                {item.category && (
+                  <span className="absolute top-4 right-4 px-3 py-1 text-sm text-black bg-white">
+                    {item.category}
+                  </span>
+                )}
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600  mb-4">{item.excerpt}</p>
+                {item.excerpt && (
+                  <p className="text-gray-600 mb-4 line-clamp-3">
+                    {item.excerpt}
+                  </p>
+                )}
                 <div className="mt-auto flex justify-between items-center">
-                  <button className="text-black font-medium transition-colors">
+                  <a 
+                    href={`/updates/${item.slug || item.id}`}
+                    className="text-black font-medium transition-colors hover:text-[#f6b417]"
+                  >
                     Read More →
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -89,5 +103,7 @@ const NewsSlider = forwardRef<NewsSliderHandles, NewsSliderProps>(({ newsItems }
     </div>
   );
 });
+
+NewsSlider.displayName = 'NewsSlider';
 
 export default NewsSlider;
