@@ -23,7 +23,7 @@ const videos = [
     id: '1',
     title: 'Pittachhara Forest Conservation',
     description: 'Nestled within the ecologically rich landscapes of Pittachhara Forest, the Pittachhara Trust is dedicated to restoring balance between people and nature. Its diverse habitats sustain numerous species, including several that are regionally endemic and globally threatened. <br/> <br/> Through science-based reforestation, habitat restoration, and inclusive community engagement, the Trust has achieved measurable improvements in local wildlife populations and ecosystem resilience. <br/> <br/> Guided by a vision of coexistence, the Pittachhara Trust continues to rewild nature and protect wildlife — ensuring that these forests remain a sanctuary for life, and a legacy for future generations.',
-    src: '/avs/1.mp4',
+    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763393281/lv_0_20251117200128_1_ih2bbl.mp4',
     thumb: '/avs/1.png'
   },
   {
@@ -194,9 +194,7 @@ export default function Home() {
           ) : error ? (
             <div className="text-center py-12 text-red-600">{error}</div>
           ) : newsItems.length > 0 ? (
-            <div ref={newsSliderRef}>
-              <NewsSlider newsItems={newsItems} />
-            </div>
+            <NewsSlider ref={newsSliderRef} newsItems={newsItems} />
           ) : (
             <div className="text-center py-12">No news available at the moment.</div>
           )}
