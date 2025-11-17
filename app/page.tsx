@@ -65,14 +65,14 @@ const videos = [
     id: '7',
     title: 'Eco-friendly Menstraul Health Program',
     description: 'Pittachhara Medical Center has launched an innovative Menstrual Hygiene Management (MHM) initiative to promote women’s health, environmental sustainability, and economic empowerment in 11 remote hilly villages of Khagrachari District, Bangladesh. The program introduced reusable sanitary pads developed with modern eco-friendly techniques that reduce environmental pollution by up to 75% compared to conventional disposable pads. <br/><br/> To ensure long-term impact and local ownership, 14 adolescent girls from seven villages were trained to produce and distribute these reusable pads, creating new livelihood opportunities within their communities. A nine-month consultation and monitoring process helped ensure proper use, hygiene, and community acceptance—achieving an 80% success rate. This initiative not only improves menstrual health and dignity but also advances gender equality, waste reduction, and climate-resilient livelihoods across marginalized areas.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763302637/WhatsApp_Video_2025-11-16_at_19.57.51_ff731162_n63bct.mp4',
+    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396955/WhatsApp_Video_2025-11-17_at_22.18.59_f4f09c8a_xly7fb.mp4',
     thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/IMG-20221026-WA0011-01_2_gjxgvk.png'
   },
   {
     id: '8',
     title: 'Community Library and Nature Studies',
     description: 'Pittachhara Trust has established a vibrant community library with over 250 members, primarily children and adolescents. The library promotes digital literacy, science education, and biodiversity awareness through regular activities such as nature walks, drama and puppet shows, art camps, Primate Fairs, award ceremonies, and school biodiversity sessions, empowering members to become active stewards of nature. <br/> <br/> In collaboration with renowned universities, the Trust conducts biodiversity awareness programs in local schools. These initiatives build a strong foundation for sustainable conservation leadership in  Bangladesh.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763302667/WhatsApp_Video_2025-11-16_at_19.55.57_ffe8125e_nc7zjf.mp4',
+    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396949/WhatsApp_Video_2025-11-17_at_22.19.29_e81728b4_eglwrb.mp4',
     thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/1000033915-01_k1pvyg.jpg'
   },
 ];

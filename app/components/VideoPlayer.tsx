@@ -102,7 +102,7 @@ export function VideoPlayer({ video, className = '', showDetails = true, height 
       </video>
 
       {!showControls && (
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <div className="absolute inset-0 flex items-center justify-center opacity-1 group-hover:opacity-100 transition-opacity duration-200">
           <div className="">
             <svg
               width={40}
