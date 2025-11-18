@@ -35,7 +35,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/#donate"
+              href="/#support"
               className="px-8 py-3 bg-[#f6b417] text-black  hover:bg-[#f6b417]/80 transition-colors font-medium"
             >
               Donate
@@ -45,7 +45,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
             <Link
-              href="/#donate"
+              href="/#support"
               className="mr-4 px-3 py-1.5 bg-[#f6b417] text-sm text-black  hover:bg-[#f6b417]/80 transition-colors font-medium"
             >
               Donate
@@ -83,7 +83,7 @@ export default function Header() {
                 </Link>
               ))}
               <Link
-                href="/#donate"
+                href="/#support"
                 className="block px-4 py-2 text-center text-black bg-[#f6b417] hover:bg-[#f6b417]/80 rounded-md transition-colors mt-2"
                 onClick={() => setIsMenuOpen(false)}
               >

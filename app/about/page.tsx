@@ -7,6 +7,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getTeamMembers, TeamMember as ContentfulTeamMember } from '@/lib/contentful';
 import { VideoPlayer } from '../components/VideoPlayer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import ReadMore from '../components/ui/ReadMore';
 
 interface TeamMemberCardProps {
   member: ContentfulTeamMember;
@@ -134,7 +135,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="">
-                <img className='h-full' src="/about2.jpg" alt="" />
+                <img className='h-full' src="/about2.png" alt="" />
               </div>
             </div>
           </div>
@@ -242,21 +243,21 @@ export default function AboutPage() {
                   {[
                     {
                       title: 'Innovation',
-                      description: 'We embrace change and constantly seek new ways to solve problems and create value.'
+                      description: 'Pittachhara Trust pioneers an innovative rewilding approach that integrates native forest restoration with stream rehabilitation to strengthen ecological connectivity. Guided by a “no-intervention is the best intervention” policy, the initiative also supports sustainable community livelihoods, empowering local people as long-term partners in conservation.'
                     },
                     {
                       title: 'Excellence',
-                      description: 'We strive for the highest standards in everything we do, delivering quality without compromise.'
+                      description: 'Pittachhara Trust stands out for its commitment to science-based rewilding and long-term ecosystem restoration in one of Bangladesh’s most threatened hill forest landscapes. In 2022, the Trust’s founder received the prestigious Balipara Foundation Award for its pioneering rewilding work. Its conservation site is also recognized as Bangladesh’s first OECM by IUCN and WWF, marking a national milestone in area-based biodiversity protection. The Trust’s excellence is further strengthened by its founder’s significant role in national social forestry policy development. In addition, the founder serves on the Advisory Board for Bangladesh Wildlife under the Ministry of Environment, Forest and Climate Change. These leadership contributions reflect the Trust’s credibility and influence in shaping conservation policy. Together, they underscore Pittachhara Trust’s position as a model for inclusive, innovative, and impactful conservation in Bangladesh. '
                     },
                     {
                       title: 'Collaboration',
-                      description: 'We believe in the power of teamwork and building strong relationships with our clients and partners.'
+                      description: 'The Pittachhara Trust collaborates with international and national institutions, including the German organization Plumploris e.V., Bangladesh Forest Research Institute (BFRI), the Oriental Bird Club (OBC), and several universities. Through these partnerships, the Trust conducts continuous wildlife surveys to understand population trends, ecological drivers, and habitat health. Its research focuses on biodiversity assessment, natural stream restoration, and the conservation of threatened and endangered species. The Trust also provides research opportunities for national and international scholars, supporting PhD studies, internships, and field-based conservation programs. These collaborations strengthen science-driven decision-making and advance long-term conservation outcomes for the region.'
                     }
                   ].map((value, index) => (
                     <div key={index} className="flex items-start space-x-4">
                       <div>
                         <h3 className="text-xl font-semibold mb-1 text-gray-800">{value.title}</h3>
-                        <p className="text-gray-600">{value.description}</p>
+                        <ReadMore text={value.description} />
                       </div>
                     </div>
                   ))}

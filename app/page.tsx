@@ -27,6 +27,27 @@ const videos = [
     thumb: '/avs/1.png'
   },
   {
+    id: '5',
+    title: 'Free Health Program',
+    description: 'Established in 2017, the Pittachhara Medical Center is a free healthcare facility serving both indigenous and Bengali communities in the remote Khagrachari District. The center is staffed by a dedicated medical team, including two MBBS doctors (one gynecology specialist), a certified midwife, a village doctor, a family planning officer, and a clinic assistant. <br/> <br/> In addition to comprehensive medical care, the center offers a subsidized pharmacy, free malaria and eye tests, and free cataract surgeries, ensuring accessible and essential healthcare for underserved communities.',
+    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396955/WhatsApp_Video_2025-11-17_at_22.18.59_f4f09c8a_xly7fb.mp4',
+    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/IMG-20221026-WA0011-01_2_gjxgvk.png'
+  },
+  {
+    id: '7',
+    title: 'Eco-friendly Menstraul Health Program',
+    description: 'Pittachhara Medical Center has launched an innovative Menstrual Hygiene Management (MHM) initiative to promote women’s health, environmental sustainability, and economic empowerment in 11 remote hilly villages of Khagrachari District, Bangladesh. The program introduced reusable sanitary pads developed with modern eco-friendly techniques that reduce environmental pollution by up to 75% compared to conventional disposable pads. <br/><br/> To ensure long-term impact and local ownership, 14 adolescent girls from seven villages were trained to produce and distribute these reusable pads, creating new livelihood opportunities within their communities. A nine-month consultation and monitoring process helped ensure proper use, hygiene, and community acceptance—achieving an 80% success rate. This initiative not only improves menstrual health and dignity but also advances gender equality, waste reduction, and climate-resilient livelihoods across marginalized areas.',
+    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763459296/Eco-friendly_Menstraul_Health_Program_kxsvil.mp4',
+    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763459125/IMG-20211213-WA0010_tgt02l.jpg'
+  },
+  {
+    id: '8',
+    title: 'Community Library and Nature Studies',
+    description: 'Pittachhara Trust has established a vibrant community library with over 250 members, primarily children and adolescents. The library promotes digital literacy, science education, and biodiversity awareness through regular activities such as nature walks, drama and puppet shows, art camps, Primate Fairs, award ceremonies, and school biodiversity sessions, empowering members to become active stewards of nature. <br/> <br/> In collaboration with renowned universities, the Trust conducts biodiversity awareness programs in local schools. These initiatives build a strong foundation for sustainable conservation leadership in  Bangladesh.',
+    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396949/WhatsApp_Video_2025-11-17_at_22.19.29_e81728b4_eglwrb.mp4',
+    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/1000033915-01_k1pvyg.jpg'
+  },
+  {
     id: '2',
     title: 'Research, Monioring and Collaboration',
     description: 'The Pittachhara Trust conducts continuous surveys to monitor wildlife population trends — identifying patterns of growth or decline and the ecological factors influencing them. Its research spans biodiversity assessment, natural stream restoration, and the conservation of endangered species. <br/><br/> In advancing this mission, the Trust collaborates with the Bangladesh Forest Research Institute (BFRI), Plumploris e.V, Oriental Bird Club (OBC), and universities. <br/><br/> The Pittachhara Trust also facilitates research opportunities for both national and international scholars, offering field support for PhD studies, internships, and conservation research programs aimed at strengthening science-based conservation in the region.',
@@ -47,13 +68,7 @@ const videos = [
     src: '1.mp4',
     thumb: '/avs/4.jpg'
   },
-  {
-    id: '5',
-    title: 'Free Health Program',
-    description: 'Established in 2017, the Pittachhara Medical Center is a free healthcare facility serving both indigenous and Bengali communities in the remote Khagrachari District. The center is staffed by a dedicated medical team, including two MBBS doctors (one gynecology specialist), a certified midwife, a village doctor, a family planning officer, and a clinic assistant. <br/> <br/> In addition to comprehensive medical care, the center offers a subsidized pharmacy, free malaria and eye tests, and free cataract surgeries, ensuring accessible and essential healthcare for underserved communities.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763302639/WhatsApp_Video_2025-11-16_at_19.57.51_3c7ea5af_iky13e.mp4',
-    thumb: '/avs/5.png'
-  },
+  
   {
     id: '6',
     title: 'Empowering Communites',
@@ -61,20 +76,7 @@ const videos = [
     src: '6.mp4',
     thumb: '/avs/6.jpg'
   },
-  {
-    id: '7',
-    title: 'Eco-friendly Menstraul Health Program',
-    description: 'Pittachhara Medical Center has launched an innovative Menstrual Hygiene Management (MHM) initiative to promote women’s health, environmental sustainability, and economic empowerment in 11 remote hilly villages of Khagrachari District, Bangladesh. The program introduced reusable sanitary pads developed with modern eco-friendly techniques that reduce environmental pollution by up to 75% compared to conventional disposable pads. <br/><br/> To ensure long-term impact and local ownership, 14 adolescent girls from seven villages were trained to produce and distribute these reusable pads, creating new livelihood opportunities within their communities. A nine-month consultation and monitoring process helped ensure proper use, hygiene, and community acceptance—achieving an 80% success rate. This initiative not only improves menstrual health and dignity but also advances gender equality, waste reduction, and climate-resilient livelihoods across marginalized areas.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396955/WhatsApp_Video_2025-11-17_at_22.18.59_f4f09c8a_xly7fb.mp4',
-    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/IMG-20221026-WA0011-01_2_gjxgvk.png'
-  },
-  {
-    id: '8',
-    title: 'Community Library and Nature Studies',
-    description: 'Pittachhara Trust has established a vibrant community library with over 250 members, primarily children and adolescents. The library promotes digital literacy, science education, and biodiversity awareness through regular activities such as nature walks, drama and puppet shows, art camps, Primate Fairs, award ceremonies, and school biodiversity sessions, empowering members to become active stewards of nature. <br/> <br/> In collaboration with renowned universities, the Trust conducts biodiversity awareness programs in local schools. These initiatives build a strong foundation for sustainable conservation leadership in  Bangladesh.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396949/WhatsApp_Video_2025-11-17_at_22.19.29_e81728b4_eglwrb.mp4',
-    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/1000033915-01_k1pvyg.jpg'
-  },
+  
 ];
 
 const ReadMore = ({ text, maxLength = 185 }: { text: string; maxLength?: number }) => {
@@ -128,7 +130,7 @@ export default function Home() {
   return (
     <Layout>
       <Hero />
-      <section className="py-20 text-gray-800 bg-white">
+      <section id='avs' className="py-20 text-gray-800 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-geograph">The Pittachhara Conservation Way</h2>
           <div className='grid md:grid-cols-2 grid-cols-1 gap-8 font-geograph'>
@@ -261,7 +263,7 @@ export default function Home() {
               Your support helps us protect wildlife, preserve natural habitats, and create a sustainable future for generations to come.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {/* Donation Card */}
               <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 h-full flex flex-col">
                 <div className="mb-6 flex-grow">
@@ -305,6 +307,29 @@ export default function Home() {
                   
                   <p className="text-sm text-gray-500 mt-4">
                     No experience necessary - just bring your enthusiasm and commitment!
+                  </p>
+                </div>
+              </div>
+
+              {/* Research/Internship/Thesis Card */}
+              <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 h-full flex flex-col">
+                <div className="mb-6 flex-grow">
+                  <h3 className="text-2xl font-semibold text-[#0a2e1f] mb-4">Research & Academics</h3>
+                  <p className="text-gray-600 mb-6">
+                    Explore research, internship, and thesis opportunities in biodiversity conservation, wildlife research, and sustainable development.
+                  </p>
+                </div>
+                
+                <div className="mt-auto">
+                  <a 
+                    href="/contact#contact"
+                    className="inline-block w-full bg-[#f6b417] hover:bg-[#e0a416] text-black font-semibold px-8 py-3 rounded transition-colors text-center"
+                  >
+                    Apply Now
+                  </a>
+                  
+                  <p className="text-sm text-gray-500 mt-4">
+                    Open to students and researchers from all over the world
                   </p>
                 </div>
               </div>

@@ -37,7 +37,7 @@ export default function ContactPage() {
       // Here you would typically send the form data to your backend
       // For now, we'll simulate a successful submission
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       setSubmitStatus({
         success: true,
         message: 'Thank you for your message! We will get back to you soon.'
@@ -60,7 +60,7 @@ export default function ContactPage() {
         <section className="relative h-[500px] md:h-[500px] flex items-center font-larken justify-center text-white overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
             <div className="absolute inset-0 overflow-hidden">
-              <motion.div 
+              <motion.div
                 className="w-full h-full"
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
@@ -79,8 +79,8 @@ export default function ContactPage() {
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="container mx-auto px-6 relative z-10 text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ export default function ContactPage() {
         {/* Contact Form Section */}
         <section id='contact' className="py-20 bg-gradient-to-b from-gray-50 to-white font-geograph">
           <div className="container mx-auto px-4 sm:px-6">
-            <motion.div 
+            <motion.div
               className="max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -113,7 +113,7 @@ export default function ContactPage() {
                     Have questions or want to know more? Fill out the form below and we'll get back to you as soon as possible.
                   </p>
                 </div>
-                
+
                 {submitStatus && (
                   <div className={`mb-8 p-4  ${submitStatus.success ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
                     {submitStatus.message}
@@ -189,7 +189,7 @@ export default function ContactPage() {
               </div>
 
               {/* Contact Information */}
-              <motion.div 
+              <motion.div
                 className="mt-20 "
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +205,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <motion.div 
+                  <motion.div
                     className="p-8 bg-white  shadow-md hover:shadow-lg transition-shadow duration-300"
                     whileHover={{ y: -5 }}
                   >
@@ -215,10 +215,10 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-center">Email Us</h3>
-                    <p className="text-gray-600 text-center">info@pittachara.com</p>
+                    <p className="text-gray-600 text-center">contact@pittachhara.org</p>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     className="p-8 bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
                     whileHover={{ y: -5 }}
                   >
@@ -228,10 +228,10 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-center">Call Us</h3>
-                    <p className="text-gray-600 text-center">017 456-7890</p>
+                    <p className="text-gray-600 text-center">01881 502 841</p>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     className="p-8 bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
                     whileHover={{ y: -5 }}
                   >
@@ -242,7 +242,10 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-center">Visit Us</h3>
-                    <p className="text-gray-600 text-center">123 Conservation Way<br />Wildlife City, Khagrachari</p>
+                    <p className="text-gray-600 text-center">Pittachhara Forest
+                      <br />East Khedachara
+                      Matiranga
+                      Khagrachhari</p>
                   </motion.div>
                 </div>
               </motion.div>
