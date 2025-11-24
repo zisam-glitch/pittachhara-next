@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-[#0a2e1f]">Pittachhara</h3>
+            <h3 className="text-2xl font-bold text-[#0a2e1f]">Pittachhara Trust</h3>
             <p className="text-gray-600">
             Pittachhara Trust undertakes native tree enrichment, stream restoration, and habitat protection to rebuild ecological connectivity.
             </p>

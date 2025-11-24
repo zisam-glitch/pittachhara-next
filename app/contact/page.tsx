@@ -1,6 +1,7 @@
 'use client';
 
 import { Layout } from '../components/layout';
+import BackgroundMusic from '../components/BackgroundMusic';
 import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -55,29 +56,22 @@ export default function ContactPage() {
 
   return (
     <Layout>
+      <BackgroundMusic audioSrc="/audio/contact-background-music.mp3" />
       <div className="min-h-screen text-gray-800">
-        {/* Hero Section with Parallax Effect */}
+        {/* Hero Section with Video Background */}
         <section className="relative h-[500px] md:h-[500px] flex items-center font-larken justify-center text-white overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
-            <div className="absolute inset-0 overflow-hidden">
-              <motion.div
-                className="w-full h-full"
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 2, ease: [0.16, 0.77, 0.47, 0.97] }}
-              >
-                <Image
-                  src="/contact.jpg"
-                  alt="Contact Us"
-                  fill
-                  className="object-cover"
-                  priority
-                  quality={100}
-                  sizes="100vw"
-                />
-              </motion.div>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://res.cloudinary.com/db1i46uiv/video/upload/v1763963601/WhatsApp_Video_2025-11-21_at_5.57.31_PM_elhi7o.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
           <motion.div

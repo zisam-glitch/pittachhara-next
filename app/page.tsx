@@ -4,6 +4,7 @@
 import { Layout } from './components/layout';
 import Hero from './components/Hero';
 import { VideoPlayer } from './components/VideoPlayer';
+import BackgroundMusic from './components/BackgroundMusic';
 import dynamic from 'next/dynamic';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -22,7 +23,7 @@ const videos = [
   {
     id: '1',
     title: 'Pittachhara Forest Conservation',
-    description: 'Nestled within the ecologically rich landscapes of Pittachhara Forest, the Pittachhara Trust is dedicated to restoring balance between people and nature. Its diverse habitats sustain numerous species, including several that are regionally endemic and globally threatened. <br/> <br/> Through science-based reforestation, habitat restoration, and inclusive community engagement, the Trust has achieved measurable improvements in local wildlife populations and ecosystem resilience. <br/> <br/> Guided by a vision of coexistence, the Pittachhara Trust continues to rewild nature and protect wildlife — ensuring that these forests remain a sanctuary for life, and a legacy for future generations.',
+    description: 'Pittachhara Trust is conserving one of the last semi-evergreen hill forests within the Indo-Burma Biodiversity Hotspot — a sanctuary for threatened species and a vital climate buffer for Bangladesh. The forest hosts nearly 150 bird species, rare mammals such as the Bengal Slow Loris and Leopard Cat, and over 40 reptiles and amphibians. <br/><br/> Through science-based rewilding, native tree restoration, and stream rehabilitation, we are rebuilding ecological connectivity and strengthening ecosystem resilience. Our community programs create sustainable livelihoods—handicrafts, mushroom cultivation, organic farming—reducing pressure on forests and fostering long-term stewardship. <br/><br/> We also operate a wildlife rescue, rehabilitation, and release facility, supporting national conservation efforts and protecting displaced wildlife. <br/><br/> By uniting ecological restoration, wildlife protection, and community empowerment, Pittachhara Trust offers a scalable nature-based solution to biodiversity loss and climate challenges—ensuring Pittachhara remains a living sanctuary for generations to come.',
     src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763393281/lv_0_20251117200128_1_ih2bbl.mp4',
     thumb: '/avs/1.png'
   },
@@ -129,6 +130,7 @@ export default function Home() {
 
   return (
     <Layout>
+      <BackgroundMusic />
       <Hero />
       <section id='avs' className="py-20 text-gray-800 bg-white">
         <div className="container mx-auto px-6">

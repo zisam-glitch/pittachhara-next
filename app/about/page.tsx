@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Layout } from '../components/layout';
+import BackgroundMusic from '../components/BackgroundMusic';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getTeamMembers, TeamMember as ContentfulTeamMember } from '@/lib/contentful';
@@ -92,21 +93,23 @@ export default function AboutPage() {
 
   return (
     <Layout>
+      <BackgroundMusic audioSrc="/audio/about-background-music.mp3" />
       <div className="min-h-screen">
-        {/* Hero Section with Background Image */}
+        {/* Hero Section with Video Background */}
         <section className="relative h-[32rem] font-larken flex items-center justify-center text-white overflow-hidden">
-          {/* Background Image with Overlay */}
+          {/* Video Background */}
           <div className="absolute inset-0 w-full h-full">
-            <Image
-              src="/about.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              priority
-              quality={100}
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-black/40"></div>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://res.cloudinary.com/db1i46uiv/video/upload/v1763963270/VID_20251121192100_1_miyvkv.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0 bg-black bg-opacity-10" />
           </div>
 
           {/* Hero Content */}
@@ -115,7 +118,7 @@ export default function AboutPage() {
               About Us
             </h1>
             <p className="text-xl max-w-2xl mx-auto">
-              We are a passionate team dedicated to creating amazing experiences through technology and innovation.
+              Meet the Gurardians of This Living Forest.
             </p>
           </div>
         </section>
@@ -125,14 +128,14 @@ export default function AboutPage() {
           <div className="container mx-auto px-6 h-full">
             <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-center gap-20">
               <div className="">
-                <h2 className="text-3xl font-bold mb-6">About PIC</h2>
+                <h2 className="text-3xl font-bold mb-6">Pittachhara Trust</h2>
                 <div className="w-24 h-1 bg-[#f6b417] mb-6"></div>
                 <p className="text-gray-600 text-lg mb-6">
-                  Since its inception in 2017, Pittachhara Trust has been officially recognized by the International Union for Conservation of Nature (IUCN) as an Other Effective Area-based Conservation Measure (OECM) — one of the first in Bangladesh. OECMs achieve sustained, effective in-situ biodiversity conservation outside traditional protected networks, contributing to global biodiversity targets such as Aichi Target 11 and the post-2020 Global Biodiversity Framework. Pittachhara Trust serves as a model for community-driven, privately managed forest conservation.
+                  Since its inception in 2017, Pittachhara Trust has been officially recognized by the International Union for Conservation of Nature (IUCN) as an Other Effective Area-based Conservation Measure (OECM) — one of the first in Bangladesh. OECMs achieve sustained, effective in-situ biodiversity conservation outside traditional protected networks, contributing to global biodiversity targets such as Aichi Target 11 and the post-2020 Global Biodiversity Framework. Pittachhara Trust serves as a model for community-driven, privately managed forest conservation. The forest spans approximately 50 acres (≈20 hectares) of privately owned land in Khagrachari Hill District.
                 </p>
-                <p className="text-gray-600 text-lg">
+                {/* <p className="text-gray-600 text-lg">
                   The forest spans approximately 50 acres (≈20 hectares) of privately owned land in Khagrachari Hill District. It is embedded within the globally recognised Indo-Burma Biodiversity Hotspot and remains one of the few well-vegetated, semi-evergreen hill forests in the region. Surveys have documented around 150 species of resident and migratory birds, including threatened taxa such as the Red-breasted Parakeet (Psittacula alexandri) and Cachar Bulbul (Hemixos flavala flavala). Key mammals include the Bengal Slow Loris (Nycticebus bengalensis), Northern Pig-tailed Macaque (Macaca leonina), and Leopard Cat (Prionailurus bengalensis), all listed as Vulnerable or Endangered on the IUCN Red List. The forest also hosts at least 26 species of snakes and other 20 reptiles and amphibians.
-                </p>
+                </p> */}
               </div>
               <div className="">
                 <img className='h-full' src="/about2.png" alt="" />
@@ -142,7 +145,7 @@ export default function AboutPage() {
         </section>
 
         {/* Video Section 1 */}
-        <section id="our-story" className="pb-24 text-gray-800 bg-white font-geograph">
+        {/* <section id="our-story" className="pb-24 text-gray-800 bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1.3fr] items-center gap-16">
               <div className="hidden md:block">
@@ -171,10 +174,10 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Video Section 2 */}
-        <section id="our-story" className="pb-24 text-gray-800 bg-white font-geograph">
+        {/* <section id="our-story" className="pb-24 text-gray-800 bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
             <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] items-center gap-16">
               <div className="">
@@ -195,7 +198,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Our Team */}
         <section className="py-24 bg-gray-50 font-geograph">
