@@ -126,7 +126,7 @@ export default function AboutPage() {
         {/* Our Story */}
         <section id="our-story" className="py-24 text-gray-800 bg-white font-geograph">
           <div className="container mx-auto px-6 h-full">
-            <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-center gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] items-center gap-8">
               <div className="">
                 <h2 className="text-3xl font-bold mb-6">Pittachhara Trust</h2>
                 <div className="w-24 h-1 bg-[#f6b417] mb-6"></div>
@@ -138,7 +138,7 @@ export default function AboutPage() {
                 </p> */}
               </div>
               <div className="">
-                <img className='h-full' src="/about2.png" alt="" />
+                <img className='h-full' src="https://res.cloudinary.com/db1i46uiv/image/upload/v1763964207/unnamed_3_z1wepq.jpg" alt="" />
               </div>
             </div>
           </div>
