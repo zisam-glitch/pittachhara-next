@@ -89,8 +89,9 @@ export default function TeamMemberDrawer({ member }: TeamMemberDrawerProps) {
                 renderNode: {
                   'paragraph': (_node, children) => <p className="mb-4">{children}</p>,
                   'text': (node) => {
-                    const text = node.value as string;
-                    return text.split('\n').map((line, i, arr) => (
+                    // Handle text node with proper typing
+                    const text = (node as any).value || '';
+                    return text.split('\n').map((line: string, i: number, arr: string[]) => (
                       <span key={i}>
                         {line}
                         {i < arr.length - 1 && <br />}
