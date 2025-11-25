@@ -222,7 +222,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-center">Call Us</h3>
-                    <p className="text-gray-600 text-center">01881 502 841</p>
+                    <p className="text-gray-600 text-center">+88 01881 502 841</p>
                   </motion.div>
 
                   <motion.div
@@ -237,7 +237,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-xl font-semibold mb-3 text-center">Visit Us</h3>
                     <p className="text-gray-600 text-center">Pittachhara Forest
-                      <br />East Khedachara
+                      <br />East Khedachara,
                       Matiranga
                       Khagrachhari</p>
                   </motion.div>

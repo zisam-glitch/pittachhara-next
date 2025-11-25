@@ -4,53 +4,17 @@ import { useEffect, useState } from 'react';
 import { Layout } from '../components/layout';
 import BackgroundMusic from '../components/BackgroundMusic';
 import Image from 'next/image';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getTeamMembers, TeamMember as ContentfulTeamMember } from '@/lib/contentful';
 import { VideoPlayer } from '../components/VideoPlayer';
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import ReadMore from '../components/ui/ReadMore';
+import TeamMemberDrawer from '../components/TeamMemberDrawer';
 
 interface TeamMemberCardProps {
   member: ContentfulTeamMember;
 }
 
 const TeamMemberCard = ({ member }: TeamMemberCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  
-  // Convert rich text to plain text and trim to 50 characters
-  const plainText = documentToPlainTextString(member.description);
-  const MAX_LENGTH = 70;
-  const needsTruncation = plainText.length > MAX_LENGTH;
-  const displayText = isExpanded ? plainText : `${plainText.substring(0, MAX_LENGTH)}${needsTruncation ? '...' : ''}`;
-
-  return (
-    <div className="group text-center">
-      <div className="relative w-48 h-48 mx-auto mb-6 overflow-hidden transition-all duration-300 group-hover:shadow-lg">
-        <Image
-          src={member.imageUrl ? `https:${member.imageUrl}` : '/placeholder-user.jpg'}
-          alt={member.fullName}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-        />
-      </div>
-      <div className="px-4">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{member.fullName}</h3>
-        <p className="text-[#f6b417] font-medium mb-2">{member.designation}</p>
-        <div className="text-gray-600 text-sm leading-relaxed">
-          {displayText}
-          {needsTruncation && (
-            <button 
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="text-[#f6b417] font-medium ml-1 hover:underline focus:outline-none"
-            >
-              {isExpanded ? 'Read Less' : 'Read More'}
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  return <TeamMemberDrawer member={member} />;
 };
 
 const videos = [
