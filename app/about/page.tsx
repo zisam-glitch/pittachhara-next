@@ -70,7 +70,7 @@ export default function AboutPage() {
               playsInline
               className="w-full h-full object-cover"
             >
-              <source src="https://res.cloudinary.com/db1i46uiv/video/upload/v1763963270/VID_20251121192100_1_miyvkv.mp4" type="video/mp4" />
+              <source src="https://res.cloudinary.com/dv5noi9zl/video/upload/v1764608161/lv_0_20251128195537_jfbyli.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 bg-black bg-opacity-10" />

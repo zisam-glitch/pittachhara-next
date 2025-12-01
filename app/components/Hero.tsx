@@ -38,7 +38,7 @@ export default function Hero() {
           className="w-full h-full object-cover"
           poster="/hero.png"
         >
-          <source src="https://res.cloudinary.com/db1i46uiv/video/upload/v1763312748/hero_ljdajh.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dv5noi9zl/video/upload/v1764608163/VID_20251128205752_fltjga.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>  
         <div 

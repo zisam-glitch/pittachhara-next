@@ -24,29 +24,29 @@ const videos = [
     id: '1',
     title: 'Pittachhara Forest Conservation',
     description: 'Pittachhara Trust is conserving one of the last semi-evergreen hill forests within the Indo-Burma Biodiversity Hotspot — a sanctuary for threatened species and a vital climate buffer for Bangladesh. The forest hosts nearly 150 bird species, rare mammals such as the Bengal Slow Loris and Leopard Cat, and over 40 reptiles and amphibians. <br/><br/> Through science-based rewilding, native tree restoration, and stream rehabilitation, we are rebuilding ecological connectivity and strengthening ecosystem resilience. Our community programs create sustainable livelihoods—handicrafts, mushroom cultivation, organic farming—reducing pressure on forests and fostering long-term stewardship. <br/><br/> We also operate a wildlife rescue, rehabilitation, and release facility, supporting national conservation efforts and protecting displaced wildlife. <br/><br/> By uniting ecological restoration, wildlife protection, and community empowerment, Pittachhara Trust offers a scalable nature-based solution to biodiversity loss and climate challenges—ensuring Pittachhara remains a living sanctuary for generations to come.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763393281/lv_0_20251117200128_1_ih2bbl.mp4',
+    src: 'https://res.cloudinary.com/dv5noi9zl/video/upload/v1764608842/lv_0_20251117200128_1_tppbfo.mp4',
     thumb: '/avs/1.png'
   },
   {
     id: '5',
     title: 'Free Health Program',
     description: 'Established in 2017, the Pittachhara Medical Center is a free healthcare facility serving both indigenous and Bengali communities in the remote Khagrachari District. The center is staffed by a dedicated medical team, including two MBBS doctors (one gynecology specialist), a certified midwife, a village doctor, a family planning officer, and a clinic assistant. <br/> <br/> In addition to comprehensive medical care, the center offers a subsidized pharmacy, free malaria and eye tests, and free cataract surgeries, ensuring accessible and essential healthcare for underserved communities.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396955/WhatsApp_Video_2025-11-17_at_22.18.59_f4f09c8a_xly7fb.mp4',
-    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/IMG-20221026-WA0011-01_2_gjxgvk.png'
+    src: 'https://res.cloudinary.com/dv5noi9zl/video/upload/v1764609269/video_20251117_221520_edit_sxxqzc.mp4',
+    thumb: '/avs/2.png'
   },
   {
     id: '7',
     title: 'Eco-friendly Menstraul Health Program',
     description: 'Pittachhara Medical Center has launched an innovative Menstrual Hygiene Management (MHM) initiative to promote women’s health, environmental sustainability, and economic empowerment in 11 remote hilly villages of Khagrachari District, Bangladesh. The program introduced reusable sanitary pads developed with modern eco-friendly techniques that reduce environmental pollution by up to 75% compared to conventional disposable pads. <br/><br/> To ensure long-term impact and local ownership, 14 adolescent girls from seven villages were trained to produce and distribute these reusable pads, creating new livelihood opportunities within their communities. A nine-month consultation and monitoring process helped ensure proper use, hygiene, and community acceptance—achieving an 80% success rate. This initiative not only improves menstrual health and dignity but also advances gender equality, waste reduction, and climate-resilient livelihoods across marginalized areas.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763459296/Eco-friendly_Menstraul_Health_Program_kxsvil.mp4',
-    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763459125/IMG-20211213-WA0010_tgt02l.jpg'
+    src: 'https://res.cloudinary.com/dv5noi9zl/video/upload/v1764609288/video_20251118_153754_edit_qnwzyo.mp4',
+    thumb: '/avs/5.jpg'
   },
   {
     id: '8',
     title: 'Community Library and Nature Studies',
     description: 'Pittachhara Trust has established a vibrant community library with over 250 members, primarily children and adolescents. The library promotes digital literacy, science education, and biodiversity awareness through regular activities such as nature walks, drama and puppet shows, art camps, Primate Fairs, award ceremonies, and school biodiversity sessions, empowering members to become active stewards of nature. <br/> <br/> In collaboration with renowned universities, the Trust conducts biodiversity awareness programs in local schools. These initiatives build a strong foundation for sustainable conservation leadership in  Bangladesh.',
-    src: 'https://res.cloudinary.com/db1i46uiv/video/upload/v1763396949/WhatsApp_Video_2025-11-17_at_22.19.29_e81728b4_eglwrb.mp4',
-    thumb: 'https://res.cloudinary.com/db1i46uiv/image/upload/v1763393273/1000033915-01_k1pvyg.jpg'
+    src: 'https://res.cloudinary.com/dv5noi9zl/video/upload/v1764609258/lv_0_20251117220436_avgztm.mp4',
+    thumb: '/avs/2.jpg'
   },
   {
     id: '2',

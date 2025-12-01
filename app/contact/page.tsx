@@ -68,7 +68,7 @@ export default function ContactPage() {
               playsInline
               className="w-full h-full object-cover"
             >
-              <source src="https://res.cloudinary.com/db1i46uiv/video/upload/v1763963601/WhatsApp_Video_2025-11-21_at_5.57.31_PM_elhi7o.mp4" type="video/mp4" />
+              <source src="https://res.cloudinary.com/dv5noi9zl/video/upload/v1764608174/VID_20251128203033_w5ohdj.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="absolute inset-0 bg-black/40"></div>
